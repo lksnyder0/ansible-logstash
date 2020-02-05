@@ -1,0 +1,14 @@
+---
+# - name: Install on Debian
+#   include: install_debian.yml
+#   when: "ansible_os_family == 'Debian'"
+- name: Install on RedHat
+  include: install_redhat.yml
+  when: "ansible_os_family == 'RedHat'"
+- name: Create log dir
+  file:
+    dest: "{{ ls_log_dir }}"
+    owner: "{{ ls_user }}"
+    group: "{{ ls_group }}"
+    mode: "{{ ls_file_permissions }}"
+    state: directory

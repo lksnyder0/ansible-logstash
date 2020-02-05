@@ -1,0 +1,18 @@
+---
+- name: Add repository (7.x)
+  yum_repository:
+    name: Elastic-7.x
+    description: "Elastic repository for 7.x packages"
+    baseurl: "https://artifacts.elastic.co/packages/7.x/yum"
+    gpgkey: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+    gpgcheck: yes
+    file: elastic-7.x
+  when: ls_version is version('7.0', '>=')
+- name: Install java (RedHat)
+  yum:
+    name: "{{ java_version | default('java-11-openjdk-devel', true) }}"
+    state: present
+- name: Install package (RedHat)
+  yum:
+    name: "1:logstash-{{ ls_version }}-1.noarch"
+    state: present

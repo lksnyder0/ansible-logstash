@@ -1,0 +1,29 @@
+---
+- name: "Copy logstash.yml"
+  template:
+    src: "logstash.yml.j2"
+    dest: "/etc/logstash/logstash.yml"
+    owner: "logstash"
+    group: "logstash"
+    mode: "0640"
+  notify: "restart logstash"
+  tags: ["config"]
+- name: "Copy pipelines.yml"
+  template:
+    src: "pipelines.yml.j2"
+    dest: "/etc/logstash/pipelines.yml"
+    owner: "logstash"
+    group: "logstash"
+    mode: "0640"
+  when: pipelines is defined
+  notify: "restart logstash"
+  tags: [ "pipelines", "config" ]
+- name: "Copy conf.d directory config files"
+  copy:
+    src: "{{ ls_conf_dir }}"
+    dest: "/etc/logstash/conf.d/"
+    mode: "preserve"
+    owner: "logstash"
+    group: "logstash"
+  when: ls_conf_dir is defined
+  tags: ["pipelines", "config"]
