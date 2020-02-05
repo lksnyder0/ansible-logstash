@@ -1,0 +1,11 @@
+---
+- name: Enable service (Systemd)
+  systemd:
+    name: logstash
+    enabled: true
+  when: service_enable == true
+- name: Start service (Systemd)
+  systemd:
+    name: logstash
+    state: started
+  when: service_start == true

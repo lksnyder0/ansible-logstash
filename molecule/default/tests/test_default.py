@@ -15,13 +15,13 @@ def test_packages(host, pkg):
     package = host.package(pkg)
 
     assert package.is_installed
-#
-#
-# @pytest.mark.parametrize('svc', [
-#   'httpd'
-# ])
-# def test_svc(host, svc):
-#     service = host.service(svc)
 
-#     assert service.is_running
-#     assert service.is_enabled
+
+@pytest.mark.parametrize('svc', [
+  'logstash'
+])
+def test_svc(host, svc):
+    service = host.service(svc)
+
+    assert service.is_running
+    assert service.is_enabled

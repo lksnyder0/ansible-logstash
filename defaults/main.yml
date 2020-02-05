@@ -1,10 +1,11 @@
 ---
 # defaults file for lksnyder0.logstash
 ls_version: 7.5.2
-ls_user: logstash
-ls_group: logstash
-
-ls_log_dir: /var/log/logstash
-ls_file_permissions: u=rwX,g=rX,o=rX
 
 el_java_package: java-11-openjdk-devel
+
+service_enable: true
+service_start: true
+
+service_manager: systemd
+# service_manager: service
