@@ -1,0 +1,7 @@
+---
+# handlers file for lksnyder0.logstash
+- name: restart logstash
+  systemd:
+    name: logstash
+    state: restarted
+  listen: "restart stack"

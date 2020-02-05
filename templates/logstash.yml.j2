@@ -1,0 +1,6 @@
+
+node.name: {{ ansible_hostname }}
+
+{% if ls_config %}
+{{ ls_config | to_nice_yaml }}
+{% endif %}

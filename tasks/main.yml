@@ -1,0 +1,4 @@
+---
+# tasks file for lksnyder0.logstash
+- name: Install Kibana
+  include: install.yml
