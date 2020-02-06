@@ -1,5 +1,5 @@
 ---
-- name: Add repository (7.x)
+- name: "RedHat: Add repository (7.x)"
   yum_repository:
     name: Elastic-7.x
     description: "Elastic repository for 7.x packages"
@@ -8,15 +8,15 @@
     gpgcheck: yes
     file: elastic-7.x
   when: ls_version is version('7.0', '>=')
-- name: Set java package name
+- name: "RedHat: Set java package name"
   set_fact:
     java_package: "{{ el_java_package }}"
   when: java_package is undefined
-- name: Install java (RedHat)
+- name: "RedHat: Install java"
   yum:
     name: "{{ java_package }}"
     state: present
-- name: Install package (RedHat)
+- name: "Redhat: Install package"
   yum:
     name: "1:logstash-{{ ls_version }}-1.noarch"
     state: present
