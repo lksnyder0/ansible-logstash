@@ -3,6 +3,7 @@
 ls_version: 7.5.2
 
 el_java_package: java-11-openjdk-devel
+debian_java_package: openjdk-11-jre-headless
 
 ls_service_enable: true
 ls_service_state: started

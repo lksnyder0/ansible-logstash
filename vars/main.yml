@@ -3,6 +3,11 @@
 ls_user: logstash
 ls_group: logstash
 
+ls_apt_repo_url: "https://artifacts.elastic.co/packages/7.x/apt"
+ls_debian_required_pkgs:
+  - gpg
+  - apt-utils
+
 ls_default_dir_permissions: u=rwX,g=rX,o-rwx
 
 ls_conf_dir: /etc/logstash
