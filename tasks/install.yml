@@ -10,5 +10,5 @@
     dest: "{{ ls_log_dir }}"
     owner: "{{ ls_user }}"
     group: "{{ ls_group }}"
-    mode: "{{ ls_file_permissions }}"
+    mode: "{{ ls_log_dir_permissions }}"
     state: directory

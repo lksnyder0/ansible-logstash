@@ -4,4 +4,4 @@ ls_user: logstash
 ls_group: logstash
 
 ls_log_dir: /var/log/logstash
-ls_file_permissions: u=rwX,g=rX,o=rX
+ls_log_dir_permissions: u=rwX,g=rX,o=rX
