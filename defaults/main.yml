@@ -4,8 +4,8 @@ ls_version: 7.5.2
 
 el_java_package: java-11-openjdk-devel
 
-service_enable: true
-service_start: true
+ls_service_enable: true
+ls_service_state: started
 
 service_manager: systemd
 # service_manager: service

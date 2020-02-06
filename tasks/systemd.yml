@@ -2,10 +2,8 @@
 - name: Enable service (Systemd)
   systemd:
     name: logstash
-    enabled: true
-  when: service_enable == true
+    enabled: "{{ ls_service_enable }}"
 - name: Start service (Systemd)
   systemd:
     name: logstash
-    state: started
-  when: service_start == true
+    state: "{{ ls_service_state }}"

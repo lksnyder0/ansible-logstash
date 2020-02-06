@@ -1,0 +1,34 @@
+---
+  - name: Ensure config directory exists with correct permissions
+    file:
+      path: "{{ ls_conf_dir }}"
+      group: "{{ ls_group }}"
+      state: directory
+      mode: "{{ ls_conf_dir_permissions }}"
+      owner: "{{ ls_user }}"
+  - name: Ensure log directory exists with correct permissions
+    file:
+      dest: "{{ ls_path_logs }}"
+      owner: "{{ ls_user }}"
+      group: "{{ ls_group }}"
+      mode: "{{ ls_path_logs_permissions }}"
+      state: directory
+  - name: Ensure other directories exits with default permissions
+    file:
+      path: "{{ item }}"
+      owner: "{{ ls_user }}"
+      group: "{{ ls_group }}"
+      state: "directory"
+      mode: "{{ ls_default_dir_permissions }}"
+    loop:
+      - "{{ ls_path_data | default('') }}"
+      - "{{ ls_path_queue | default('') }}"
+      - "{{ ls_path_dead_letter_queue | default('') }}"
+    when: item| length > 0
+  - name: Copy logstash.yml
+    template:
+        dest: "{{ ls_conf_file }}"
+        src: "{{ ls_conf_file_template }}"
+        owner: "{{ ls_user }}"
+        group: "{{ ls_group }}"
+        mode: "{{ ls_conf_file_permissions }}"
