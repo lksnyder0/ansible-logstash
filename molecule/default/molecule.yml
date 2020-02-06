@@ -8,12 +8,21 @@ lint:
 platforms:
   # - name: instance
   #   image: centos:7
-  - name: instance
+  - name: centos7
     image: centos:7
     privileged: true
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     command: "/usr/sbin/init"
+    tty: True
+    environment:
+      container: docker
+  - name: debian11
+    image: debian:bullseye
+    dockerfile: debian11_Dockerfile.j2
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     tty: True
     environment:
       container: docker

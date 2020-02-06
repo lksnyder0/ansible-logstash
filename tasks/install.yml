@@ -1,7 +1,7 @@
 ---
-# - name: Install on Debian
-#   include: install_debian.yml
-#   when: "ansible_os_family == 'Debian'"
+- name: Install on Debian
+  include: install_debian.yml
+  when: "ansible_os_family == 'Debian'"
 - name: Install on RedHat
   include: install_redhat.yml
   when: "ansible_os_family == 'RedHat'"
