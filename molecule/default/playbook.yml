@@ -3,3 +3,6 @@
   hosts: all
   roles:
     - role: lksnyder0.logstash
+  vars:
+    ls_service_state: stopped
+    ls_service_enable: false
