@@ -6,10 +6,29 @@
       state: directory
       mode: "{{ ls_conf_dir_permissions }}"
       owner: "{{ ls_user }}"
+  - name: Ensure log directory exists with correct permissions
+    file:
+      dest: "{{ ls_path_logs }}"
+      owner: "{{ ls_user }}"
+      group: "{{ ls_group }}"
+      mode: "{{ ls_path_logs_permissions }}"
+      state: directory
+  - name: Ensure other directories exits with correct permissions
+    file:
+      path: "{{ item }}"
+      owner: "{{ ls_user }}"
+      group: "{{ ls_group }}"
+      state: "directory"
+      mode: "{{ ls_default_dir_permissions }}"
+    loop:
+      - "{{ ls_path_data | default() }}"
+      - "{{ ls_path_queue | default() }}"
+      - "{{ ls_path_dead_letter_queue | default() }}"
+    when: item != ""
   - name: Copy logstash.yml
     template:
         dest: "{{ ls_conf_file }}"
         src: "{{ ls_conf_file_template }}"
-        owner: "{{ ls_user }}" # not required. Name of the user that should own the file/directory, as would be fed to I(chown).
-        group: "{{ ls_group }}" # not required. Name of the group that should own the file/directory, as would be fed to I(chown).
-        mode: "{{ ls_conf_file_permissions }}" # not required. Mode the file or directory should be. For those used to I(/usr/bin/chmod) remember that modes are actually octal numbers.  You must either add a leading zero so that Ansible's YAML parser knows it is an octal number (like C(0644) or C(01777)) or quote it (like C('644') or C('1777')) so Ansible receives a string and can do its own conversion from string into number.  Giving Ansible a number without following one of these rules will end up with a decimal number which will have unexpected results.  As of version 1.8, the mode may be specified as a symbolic mode (for example, C(u+rwx) or C(u=rw,g=r,o=r)).  As of version 2.6, the mode may also be the special string C(preserve).  C(preserve) means that the file will be given the same permissions as the source file.
+        owner: "{{ ls_user }}"
+        group: "{{ ls_group }}"
+        mode: "{{ ls_conf_file_permissions }}"

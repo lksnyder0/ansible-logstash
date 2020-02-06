@@ -39,4 +39,4 @@ def test_config_file(host):
 def test_config_file_contents(host):
     log_file = host.file("/etc/logstash/logstash.yml")
 
-    assert log_file.contains("node.name: instance")
+    assert log_file.md5sum == "d3f59f219f157839b1eef57cf9acece4"
