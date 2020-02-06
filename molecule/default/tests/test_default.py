@@ -17,14 +17,14 @@ def test_packages(host, pkg):
     assert package.is_installed
 
 
-# @pytest.mark.parametrize('svc', [
-#     'logstash'
-# ])
-# def test_svc(host, svc):
-#     service = host.service(svc)
+@pytest.mark.parametrize('svc', [
+    'logstash'
+])
+def test_svc(host, svc):
+    service = host.service(svc)
 
-#     assert service.is_running
-#     assert service.is_enabled
+    assert service.is_running
+    assert service.is_enabled
 
 
 def test_config_file(host):
