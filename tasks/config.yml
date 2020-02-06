@@ -13,7 +13,7 @@
       group: "{{ ls_group }}"
       mode: "{{ ls_path_logs_permissions }}"
       state: directory
-  - name: Ensure other directories exits with correct permissions
+  - name: Ensure other directories exits with default permissions
     file:
       path: "{{ item }}"
       owner: "{{ ls_user }}"
@@ -21,10 +21,10 @@
       state: "directory"
       mode: "{{ ls_default_dir_permissions }}"
     loop:
-      - "{{ ls_path_data | default() }}"
-      - "{{ ls_path_queue | default() }}"
-      - "{{ ls_path_dead_letter_queue | default() }}"
-    when: item != ""
+      - "{{ ls_path_data | default('') }}"
+      - "{{ ls_path_queue | default('') }}"
+      - "{{ ls_path_dead_letter_queue | default('') }}"
+    when: item| length > 0
   - name: Copy logstash.yml
     template:
         dest: "{{ ls_conf_file }}"

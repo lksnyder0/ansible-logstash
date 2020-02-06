@@ -8,7 +8,8 @@
     gpgcheck: yes
     file: elastic-7.x
   when: ls_version is version('7.0', '>=')
-- set_fact:
+- name: Set java package name
+  set_fact:
     java_package: "{{ el_java_package }}"
   when: java_package is undefined
 - name: Install java (RedHat)
