@@ -5,3 +5,11 @@ ls_group: logstash
 
 ls_log_dir: /var/log/logstash
 ls_log_dir_permissions: u=rwX,g=rX,o=rX
+
+node_name: "{{ ansible_hostname }}"
+
+ls_conf_dir: /etc/logstash
+ls_conf_dir_permissions: u=rwX,g=rw,o-rwX
+ls_conf_file: "{{ ls_conf_dir }}/logstash.yml"
+ls_conf_file_permissions: u=rw,g=r,o-rw
+ls_conf_file_template: "logstash.yml.j2"

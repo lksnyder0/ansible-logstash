@@ -5,3 +5,6 @@
 
 - name: Setup Service
   include: service.yml
+
+- name: Configure Logstash
+  include: config.yml

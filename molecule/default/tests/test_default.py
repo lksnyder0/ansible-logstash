@@ -25,3 +25,18 @@ def test_packages(host, pkg):
 
 #     assert service.is_running
 #     assert service.is_enabled
+
+
+def test_config_file(host):
+    log_file = host.file("/etc/logstash/logstash.yml")
+
+    assert log_file.exists
+    assert log_file.user == "logstash"
+    assert log_file.group == "logstash"
+    assert log_file.mode == 0o0640
+
+
+def test_config_file_contents(host):
+    log_file = host.file("/etc/logstash/logstash.yml")
+
+    assert log_file.contains("node.name: instance")
