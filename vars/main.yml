@@ -17,9 +17,6 @@ ls_conf_file_permissions: u=rw,g=r,o-rw
 ls_conf_file_template: "logstash.yml.j2"
 
 # logstash.yml settings
-# Node Identity
-ls_node_name: "{{ ansible_hostname }}"
-
 # Data Path
 ls_path_data: "/var/lib/logstash"
 
