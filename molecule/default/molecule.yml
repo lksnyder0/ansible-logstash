@@ -19,13 +19,14 @@ platforms:
       container: docker
   - name: debian11
     image: debian:bullseye
-    dockerfile: debian11_Dockerfile.j2
+    dockerfile: dockerfiles/debian.Dockerfile.j2
     privileged: true
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     tty: True
     environment:
       container: docker
+    command: "/sbin/init"
 provisioner:
   name: ansible
   lint:

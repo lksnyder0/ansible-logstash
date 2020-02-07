@@ -4,22 +4,18 @@ import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']
-).get_hosts('all')
+    os.environ["MOLECULE_INVENTORY_FILE"]
+).get_hosts("all")
 
 
-@pytest.mark.parametrize('pkg', [
-    'logstash'
-])
+@pytest.mark.parametrize("pkg", ["logstash"])
 def test_packages(host, pkg):
     package = host.package(pkg)
 
     assert package.is_installed
 
 
-@pytest.mark.parametrize('svc', [
-    'logstash'
-])
+@pytest.mark.parametrize("svc", ["logstash"])
 def test_svc(host, svc):
     service = host.service(svc)
 
@@ -39,4 +35,4 @@ def test_config_file(host):
 def test_config_file_contents(host):
     log_file = host.file("/etc/logstash/logstash.yml")
 
-    assert log_file.md5sum == "d3f59f219f157839b1eef57cf9acece4"
+    assert log_file.md5sum == "394bd2da7ad9c671eb21c948b8fe39b7"

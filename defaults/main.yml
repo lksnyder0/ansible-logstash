@@ -10,3 +10,7 @@ ls_service_state: started
 
 service_manager: systemd
 # service_manager: service
+
+# logstash.yml settings
+# Node Identity
+ls_node_name: "{{ ansible_hostname }}"

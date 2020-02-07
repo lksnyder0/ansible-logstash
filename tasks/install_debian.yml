@@ -33,6 +33,3 @@
       name: "logstash=1:{{ ls_version }}-1"
       state: present
       update_cache: yes
-
-
-    
