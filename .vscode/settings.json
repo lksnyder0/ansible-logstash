@@ -8,5 +8,6 @@
     "[yaml]": {
         "editor.tabSize": 2
     },
-    "restructuredtext.confPath": ""
+    "restructuredtext.confPath": "",
+    "python.formatting.provider": "black"
 }
