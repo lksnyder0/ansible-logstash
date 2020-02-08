@@ -1,0 +1,38 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: debian11
+    image: "lksnyder0/debian_systemd:11"
+    privileged: True
+    pull: True
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: True
+    environment:
+      container: docker
+    command: "/sbin/init"
+    pre_build_image: True
+  - name: debian10
+    image: "lksnyder0/debian_systemd:10"
+    privileged: True
+    pull: True
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: True
+    environment:
+      container: docker
+    command: "/sbin/init"
+    pre_build_image: True
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
