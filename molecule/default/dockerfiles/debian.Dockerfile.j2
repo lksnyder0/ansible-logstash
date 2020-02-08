@@ -37,12 +37,7 @@ RUN apt-get update && \
         systemd         \
         systemd-sysv    \
         cron            \
-        anacron         \
-        python          \
-        sudo            \
-        bash            \
-        ca-certificates \
-        iproute2     && \
+        anacron      && \
     apt-get clean
 
 RUN rm -rf                        \

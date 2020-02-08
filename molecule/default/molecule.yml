@@ -8,25 +8,28 @@ lint:
 platforms:
   # - name: instance
   #   image: centos:7
-  - name: centos7
-    image: centos:7
-    privileged: true
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    command: "/usr/sbin/init"
-    tty: True
-    environment:
-      container: docker
+  # - name: centos7
+  #   image: centos:7
+  #   privileged: true
+  #   volumes:
+  #     - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  #   command: "/usr/sbin/init"
+  #   tty: True
+  #   environment:
+  #     container: docker
   - name: debian11
-    image: debian:bullseye
-    dockerfile: dockerfiles/debian.Dockerfile.j2
+    image: "lksnyder0/molecule_docker_images/debian_systemd:latest_feature-docker-systemd"
+    # dockerfile: dockerfiles/debian.Dockerfile.j2
+    registry:
+      url: registry.gitlab.com
     privileged: true
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     tty: True
     environment:
       container: docker
-    command: "/sbin/init"
+    # command: "/sbin/init"
+    pre_build_image: true
 provisioner:
   name: ansible
   lint:
