@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: lksnyder0.logstash
+  vars:
+    ls_node_name: node

@@ -6,8 +6,6 @@ driver:
 lint:
   name: yamllint
 platforms:
-  # - name: instance
-  #   image: centos:7
   - name: centos7
     image: centos:7
     privileged: true
@@ -17,16 +15,6 @@ platforms:
     tty: True
     environment:
       container: docker
-  - name: debian11
-    image: debian:bullseye
-    dockerfile: dockerfiles/debian.Dockerfile.j2
-    privileged: true
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    tty: True
-    environment:
-      container: docker
-    command: "/sbin/init"
 provisioner:
   name: ansible
   lint:
