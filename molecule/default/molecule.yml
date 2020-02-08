@@ -18,18 +18,21 @@ platforms:
   #   environment:
   #     container: docker
   - name: debian11
-    image: "lksnyder0/molecule_docker_images/debian_systemd:latest_feature-docker-systemd"
-    # dockerfile: dockerfiles/debian.Dockerfile.j2
-    registry:
-      url: registry.gitlab.com
-    privileged: true
+    # image: "lksnyder0/molecule_docker_images/debian_systemd:latest_feature-docker-systemd"
+    # image: "lksnyder0/debian"
+    image: "debian:11"
+    dockerfile: dockerfiles/debian.Dockerfile.j2
+    # registry:
+    #   url: registry.gitlab.com
+    privileged: True
+    pull: True
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     tty: True
     environment:
       container: docker
-    # command: "/sbin/init"
-    pre_build_image: true
+    command: "/sbin/init"
+    pre_build_image: True
 provisioner:
   name: ansible
   lint:
