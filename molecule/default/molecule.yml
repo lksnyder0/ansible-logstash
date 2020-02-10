@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: centos7
-    image: centos:7
+    image: lksnyder0/centos_systemd:7
     privileged: true
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
@@ -15,6 +15,7 @@ platforms:
     tty: True
     environment:
       container: docker
+    pre_build_image: True
 provisioner:
   name: ansible
   lint:

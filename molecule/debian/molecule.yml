@@ -8,7 +8,7 @@ lint:
 platforms:
   - name: debian11
     image: "lksnyder0/debian_systemd:11"
-    privileged: True
+    # privileged: True
     pull: True
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
@@ -19,7 +19,7 @@ platforms:
     pre_build_image: True
   - name: debian10
     image: "lksnyder0/debian_systemd:10"
-    privileged: True
+    # privileged: True
     pull: True
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
