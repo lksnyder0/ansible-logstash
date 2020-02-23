@@ -27,8 +27,9 @@
     when: item| length > 0
   - name: Copy logstash.yml
     template:
-        dest: "{{ ls_conf_file }}"
-        src: "{{ ls_conf_file_template }}"
-        owner: "{{ ls_user }}"
-        group: "{{ ls_group }}"
-        mode: "{{ ls_conf_file_permissions }}"
+      dest: "{{ ls_conf_file }}"
+      src: "{{ ls_conf_file_template }}"
+      owner: "{{ ls_user }}"
+      group: "{{ ls_group }}"
+      mode: "{{ ls_conf_file_permissions }}"
+    notiify: "restart logstash"

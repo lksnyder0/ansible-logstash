@@ -5,3 +5,4 @@
     name: logstash
     state: restarted
   listen: "restart stack"
+  when: service_manager == "systemd"

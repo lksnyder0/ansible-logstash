@@ -16,7 +16,9 @@
   yum:
     name: "{{ java_package }}"
     state: present
+  notify: restart logstash
 - name: "Redhat: Install package"
   yum:
     name: "1:logstash-{{ ls_version }}-1.noarch"
     state: present
+  notify: restart logstash

@@ -3,7 +3,3 @@
   systemd:
     name: logstash
     enabled: "{{ ls_service_enable }}"
-- name: Start service (Systemd)
-  systemd:
-    name: logstash
-    state: "{{ ls_service_state }}"
