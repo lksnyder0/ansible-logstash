@@ -42,14 +42,6 @@
       owner: no
       recursive: yes
     when: (ls_main_pipeline_dest_dir is defined) and (ls_main_pipeline_src_dir is defined)
-    notify: "restart logstash"
-    register: main_pipeline
-  - name: Fix Main Pipeline File Permissions
-    when: main_pipeline.changed
-    file:
-      path: "{{ ls_main_pipeline_dest_dir }}" # required. Path to the file being managed.
-      access_time: preserve # not required. This parameter indicates the time the file's access time should be set to,Should be C(preserve) when no modification is required, C(YYYYMMDDHHMM.SS) when using default time format, or C(now),Default is None meaning that C(preserve) is the default for C(state=[file,directory,link,hard]) and C(now) is default for C(state=touch)
-      owner: "{{ ls_user }}"
-      group: "{{ ls_group }}"
-      mode: "{{ ls_conf_dir_permissions }}"
-      recurse: yes
+    notify:
+      - "restart logstash"
+      - "fix main pipeline permissions"
