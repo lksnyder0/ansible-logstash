@@ -21,7 +21,7 @@ ls_conf_file_template: "logstash.yml.j2"
 ls_path_data: "/var/lib/logstash"
 
 # Pipeline Configuration Settings
-# ls_path_config: "{{ ls_conf_dir }}"/pipelines.yml
+ls_path_config: "{{ ls_main_pipeline_dest_dir }}/*.conf"
 ls_config_reload_automatic: false
 # ls_config_reload_interval: 3s
 # ls_config_support_escapes: false
@@ -49,3 +49,6 @@ dead_letter_queue_enable: false
 ls_log_level: info
 ls_path_logs: /var/log/logstash
 ls_path_logs_permissions: u=rwX,g=rX,o=rX
+
+# Playbook Specific: Pipeline Config Settings
+ls_main_pipeline_dest_dir: "{{ ls_conf_dir }}/conf.d"
