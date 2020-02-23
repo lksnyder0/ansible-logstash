@@ -8,32 +8,46 @@ path.data: {{ ls_path_data }}
 #
 # ------------ Pipeline Configuration Settings --------------
 #
-{% if ls_path_config is defined %}path.config: {{ ls_path_config }}{% endif %}
+{% if ls_path_config is defined %}path.config: {{ ls_path_config }}
+{% endif %}
 config.reload.automatic: {{ ls_config_reload_automatic }}
-{% if ls_config_reload_interval is defined %}config.reload.interval: {{ ls_config_reload_interval }}{% endif %}
-{% if ls_config_support_escapes is defined %}config.support_escapes: {{ ls_config_support_escapes }}{% endif %}
+{% if ls_config_reload_interval is defined %}config.reload.interval: {{ ls_config_reload_interval }}
+{% endif %}
+{% if ls_config_support_escapes is defined %}config.support_escapes: {{ ls_config_support_escapes }}
+{% endif %}
 #
 # ------------ Queuing Settings --------------
 #
 queue.type: {{ ls_queue_type }}
-{% if ls_path_queue is defined %}path.queue: {{ ls_path_queue }}{% endif %}
-{% if ls_queue_page_capacity is defined %}queue.page_capacity: {{ ls_queue_page_capacity }}{% endif %}
-{% if ls_queue_max_events is defined %}queue.max_events: {{ ls_queue_max_events }}{% endif %}
-{% if ls_queue_max_bytes is defined %}queue.max_bytes: {{ ls_queue_max_bytes }}{% endif %}
-{% if ls_queue_checkpoint_acks is defined %}queue.checkpont.acks: {{ ls_queue_checkpoint_acks }}{% endif %}
-{% if ls_queue_checkpoint_writes is defined %}queue.checkpont.writes: {{ ls_queue_checkpoint_writes }}{% endif %}
-{% if ls_queue_checkpoint_interval is defined %}queue.checkpont.interval: {{ ls_queue_checkpoint_interval }}{% endif %}
+{% if ls_path_queue is defined %}path.queue: {{ ls_path_queue }}
+{% endif %}
+{% if ls_queue_page_capacity is defined %}queue.page_capacity: {{ ls_queue_page_capacity }}
+{% endif %}
+{% if ls_queue_max_events is defined %}queue.max_events: {{ ls_queue_max_events }}
+{% endif %}
+{% if ls_queue_max_bytes is defined %}queue.max_bytes: {{ ls_queue_max_bytes }}
+{% endif %}
+{% if ls_queue_checkpoint_acks is defined %}queue.checkpont.acks: {{ ls_queue_checkpoint_acks }}
+{% endif %}
+{% if ls_queue_checkpoint_writes is defined %}queue.checkpont.writes: {{ ls_queue_checkpoint_writes }}
+{% endif %}
+{% if ls_queue_checkpoint_interval is defined %}queue.checkpont.interval: {{ ls_queue_checkpoint_interval }}
+{% endif %}
 #
 # ------------ Dead-Letter Queue Settings --------------
 #
 dead_letter_queue.enable: {{ dead_letter_queue_enable }}
-{% if ls_dead_letter_queue_max_bytes is defined %}dead_letter_queue.max_bytes: {{ ls_dead_letter_queue_max_bytes }}{% endif %}
-{% if ls_path_dead_letter_queue is defined %}path.dead_letter_queue: {{ ls_path_dead_letter_queue }}{% endif %}
+{% if ls_dead_letter_queue_max_bytes is defined %}dead_letter_queue.max_bytes: {{ ls_dead_letter_queue_max_bytes }}
+{% endif %}
+{% if ls_path_dead_letter_queue is defined %}path.dead_letter_queue: {{ ls_path_dead_letter_queue }}
+{% endif %}
 #
 # ------------ Metrics Settings --------------
 #
-{% if ls_http_host is defined %}http.host: "{{ ls_http_host }}"{% endif %}
-{% if ls_http_port is defined %}http.port: {{ ls_http_port }}{% endif %}
+{% if ls_http_host is defined %}http.host: "{{ ls_http_host }}"
+{% endif %}
+{% if ls_http_port is defined %}http.port: {{ ls_http_port }}
+{% endif %}
 #
 # ------------ Debugging Settings --------------
 #
