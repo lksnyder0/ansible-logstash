@@ -6,7 +6,6 @@ el_java_package: java-11-openjdk-devel
 debian_java_package: openjdk-11-jre-headless
 
 ls_service_enable: true
-ls_service_state: started
 
 service_manager: systemd
 # service_manager: service
