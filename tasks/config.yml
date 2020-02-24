@@ -24,7 +24,6 @@
       - "{{ ls_path_data | default('') }}"
       - "{{ ls_path_queue | default('') }}"
       - "{{ ls_path_dead_letter_queue | default('') }}"
-      - "{{ ls_main_pipeline_dest_dir | default('') }}"
     when: item| length > 0
   - name: Copy logstash.yml
     template:
@@ -38,10 +37,10 @@
     synchronize:
       dest: "{{ ls_main_pipeline_dest_dir }}"
       src: "{{ ls_main_pipeline_src_dir }}"
-      group: no
-      owner: no
       recursive: yes
-    when: (ls_main_pipeline_dest_dir is defined) and (ls_main_pipeline_src_dir is defined)
+      checksum: yes
+      archive: no
+    when: ls_main_pipeline_dest_dir is defined and ls_main_pipeline_src_dir is defined
     notify:
-      - "restart logstash"
       - "fix main pipeline permissions"
+      - "restart logstash"

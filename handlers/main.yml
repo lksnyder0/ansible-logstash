@@ -10,7 +10,6 @@
 - name: fix main pipeline permissions
   file:
     path: "{{ ls_main_pipeline_dest_dir }}"
-    access_time: preserve
     owner: "{{ ls_user }}"
     group: "{{ ls_group }}"
     mode: "{{ ls_conf_dir_permissions }}"
