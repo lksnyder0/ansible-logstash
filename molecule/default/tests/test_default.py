@@ -40,8 +40,8 @@ def test_config_file_contents(host):
     assert b"log.level: info" in conf_file_content
 
 
-def test_default_pipeline(host):
-    pipeline_output = host.file("/tmp/logstash_output.txt")
+# def test_default_pipeline(host):
+#     pipeline_output = host.file("/tmp/logstash_output.txt")
 
-    assert pipeline_output.exists
-    assert b'"message":"ok"' in pipeline_output.content
+#     assert pipeline_output.exists
+#     assert b'"message":"ok"' in pipeline_output.content

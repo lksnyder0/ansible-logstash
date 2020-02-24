@@ -33,6 +33,15 @@ def test_config_file(host):
 
 
 def test_config_file_contents(host):
-    log_file = host.file("/etc/logstash/logstash.yml")
+    conf_file_content = host.file("/etc/logstash/logstash.yml").content
 
-    assert log_file.md5sum == "394bd2da7ad9c671eb21c948b8fe39b7"
+    assert b"node.name: node" in conf_file_content
+    assert b"queue.type: memory" in conf_file_content
+    assert b"log.level: info" in conf_file_content
+
+
+# def test_default_pipeline(host):
+#     pipeline_output = host.file("/tmp/logstash_output.txt")
+
+#     assert pipeline_output.exists
+#     assert b'"message":"ok"' in pipeline_output.content
