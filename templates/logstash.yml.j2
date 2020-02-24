@@ -56,4 +56,5 @@ path.logs: {{ ls_path_logs }}
 #
 # ------------ Extra Settings --------------
 #
-{% if ls_extra_settings is defined %}{{ ls_extra_settings | to_yaml}}{% endif %}
+{% if ls_extra_settings is defined %}{{ ls_extra_settings | to_nice_yaml(indent=2)}}
+{% endif %}
