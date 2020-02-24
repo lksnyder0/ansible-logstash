@@ -1,0 +1,31 @@
+---
+  - name: "Debian: Install required pagkages"
+    apt:
+      name: "{{ ls_debian_required_pkgs }}"
+      state: present
+      update_cache: yes
+  - name: "Debian: Set java package name"
+    set_fact:
+      java_package: "{{ debian_java_package }}"
+    when: java_package is undefined
+  - name: "Debian: Install Java"
+    apt:
+      name: "{{ java_package }}"
+      state: present
+    notify: restart logstash
+  - name: "Debian: Add Elastic code signing key"
+    apt_key:
+      url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      state: present
+    when: ls_version is version('7.0', '>=')
+  - name: "Debian: Add Elastic code repo"
+    template:
+      src: elastic-7.x.list.j2
+      dest: /etc/apt/sources.list.d/elastic-7.x.list
+    when: ls_version is version('7.0', '>=')
+  - name: "Debian: Install package"
+    apt:
+      name: "logstash=1:{{ ls_version }}-1"
+      state: present
+      update_cache: yes
+    notify: restart logstash

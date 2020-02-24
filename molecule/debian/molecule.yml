@@ -6,13 +6,28 @@ driver:
 lint:
   name: yamllint
 platforms:
-  # - name: instance
-  #   image: centos:7
-  - name: debian-bullseye
-    image: debian:bullseye
+  - name: debian11
+    image: "lksnyder0/debian_systemd:11"
+    # privileged: True
+    pull: True
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: True
+    environment:
+      container: docker
+    command: "/sbin/init"
+    pre_build_image: True
+  - name: debian10
+    image: "lksnyder0/debian_systemd:10"
+    # privileged: True
+    pull: True
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: True
+    environment:
+      container: docker
+    command: "/sbin/init"
+    pre_build_image: True
 provisioner:
   name: ansible
   lint:

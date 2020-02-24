@@ -1,4 +1,10 @@
 ---
 # tasks file for lksnyder0.logstash
-- name: Install Kibana
+- name: Install Logstash
   include: install.yml
+
+- name: Configure Logstash
+  include: config.yml
+
+- name: Setup Service
+  include: service.yml

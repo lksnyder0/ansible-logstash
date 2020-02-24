@@ -5,3 +5,12 @@
     name: logstash
     state: restarted
   listen: "restart stack"
+  when: service_manager == "systemd"
+
+- name: fix main pipeline permissions
+  file:
+    path: "{{ ls_main_pipeline_dest_dir }}"
+    owner: "{{ ls_user }}"
+    group: "{{ ls_group }}"
+    mode: "{{ ls_conf_dir_permissions }}"
+    recurse: yes

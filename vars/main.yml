@@ -1,2 +1,54 @@
 ---
 # vars file for lksnyder0.logstash
+ls_user: logstash
+ls_group: logstash
+
+ls_apt_repo_url: "https://artifacts.elastic.co/packages/7.x/apt"
+ls_debian_required_pkgs:
+  - gpg
+  - apt-utils
+
+ls_default_dir_permissions: u=rwX,g=rX,o-rwx
+
+ls_conf_dir: /etc/logstash
+ls_conf_dir_permissions: u=rwX,g=rwX,o-rwX
+ls_conf_file: "{{ ls_conf_dir }}/logstash.yml"
+ls_conf_file_permissions: u=rw,g=r,o-rw
+ls_conf_file_template: "logstash.yml.j2"
+
+# logstash.yml settings
+# Data Path
+ls_path_data: "/var/lib/logstash"
+
+# Pipeline Configuration Settings
+ls_path_config: "{{ ls_main_pipeline_dest_dir }}/*.conf"
+ls_config_reload_automatic: false
+# ls_config_reload_interval: 3s
+# ls_config_support_escapes: false
+
+# Queuing Settings
+ls_queue_type: memory
+# ls_queue_type: persisted
+# ls_path_queue: "{{ ls_path_data }}/queue"
+# ls_queue_max_events: 0
+# ls_queue_max_bytes: 1024mb
+# ls_queue_checkpoint_acks: 1024
+# ls_queue_checkpoint_writes: 1024
+# ls_queue_checkpoint_interval: 1000
+
+# Dead-Letter Queue Settings
+dead_letter_queue_enable: false
+# ls_dead_letter_queue_max_bytes: 1024mb
+# ls_path_dead_letter_queue: "{{ ls_path_data }}/dead_letter_queue"
+
+# Metrics Settings
+# ls_http_host: "127.0.0.1"
+# ls_http_port: 9600-9700
+
+# Debugging Settings
+ls_log_level: info
+ls_path_logs: /var/log/logstash
+ls_path_logs_permissions: u=rwX,g=rX,o=rX
+
+# Playbook Specific: Pipeline Config Settings
+ls_main_pipeline_dest_dir: "{{ ls_conf_dir }}/conf.d"

@@ -1,0 +1,5 @@
+---
+- name: Enable service (Systemd)
+  systemd:
+    name: logstash
+    enabled: "{{ ls_service_enable }}"

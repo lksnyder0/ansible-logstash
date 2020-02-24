@@ -1,0 +1,24 @@
+---
+- name: "RedHat: Add repository (7.x)"
+  yum_repository:
+    name: Elastic-7.x
+    description: "Elastic repository for 7.x packages"
+    baseurl: "https://artifacts.elastic.co/packages/7.x/yum"
+    gpgkey: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+    gpgcheck: yes
+    file: elastic-7.x
+  when: ls_version is version('7.0', '>=')
+- name: "RedHat: Set java package name"
+  set_fact:
+    java_package: "{{ el_java_package }}"
+  when: java_package is undefined
+- name: "RedHat: Install java"
+  yum:
+    name: "{{ java_package }}"
+    state: present
+  notify: restart logstash
+- name: "Redhat: Install package"
+  yum:
+    name: "1:logstash-{{ ls_version }}-1.noarch"
+    state: present
+  notify: restart logstash
