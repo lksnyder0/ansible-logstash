@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: logstash
   author: Luke Snyder
   description: Install and configure logstash
   company: N/A
