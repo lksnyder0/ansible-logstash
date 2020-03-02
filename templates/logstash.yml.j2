@@ -15,6 +15,17 @@ config.reload.automatic: {{ ls_config_reload_automatic }}
 {% endif %}
 {% if ls_config_support_escapes is defined %}config.support_escapes: {{ ls_config_support_escapes }}
 {% endif %}
+{% if ls_pipeline_workers is defined %}pipeline.workers: {{ ls_pipeline_workers }}
+{% endif %}
+{% if ls_pipeline_batch_size is defined %}pipeline.batch.size: {{ ls_pipeline_batch_size }}
+{% endif %}
+{% if ls_pipeline_batch_delay is defined %}pipeline.batch.delay: {{ ls_pipeline_batch_delay }}
+{% endif %}
+{% if ls_pipeline_unsafe_shutdown is defined %}pipeline.unsafe_shutdown: {{ ls_pipeline_unsafe_shutdown }}
+{% endif %}
+{% if ls_pipeline_plugin_classloaders is defined %}pipeline.plugin_classloaders: {{ ls_pipeline_plugin_classloaders }}
+{% endif %}
+
 #
 # ------------ Queuing Settings --------------
 #
