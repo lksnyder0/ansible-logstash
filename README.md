@@ -43,6 +43,11 @@ All of these settings are directly entered as their logstash.yml equilivent. The
   - **ls_config_reload_automatic**: `false`
   - **ls_config_reload_interval**: `3s`
   - **ls_config_support_escapes**: `false`
+  - **ls_pipeline_workers**: `undefined`
+  - **ls_pipeline_batch_size**: `undefined`
+  - **ls_pipeline_batch_delay**: `undefined`
+  - **ls_pipeline_unsafe_shutdown**: `undefined`
+  - **ls_pipeline_plugin_classloaders**: `undefined`
   - **ls_queue_type**: `memory`
   - **ls_queue_type**: `undefined`
   - **ls_path_queue**: `undefined`
