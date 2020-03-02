@@ -5,3 +5,4 @@
     - role: lksnyder0.logstash
   vars:
     ls_node_name: node
+    ls_pipeline_workers: 1

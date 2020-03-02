@@ -25,6 +25,11 @@ ls_path_config: "{{ ls_main_pipeline_dest_dir }}/*.conf"
 ls_config_reload_automatic: false
 # ls_config_reload_interval: 3s
 # ls_config_support_escapes: false
+# ls_pipeline_workers: 2
+# ls_pipeline_batch_size: 125
+# ls_pipeline_batch_delay: 50
+# ls_pipeline_unsafe_shutdown: false
+# ls_pipeline_plugin_classloaders: false
 
 # Queuing Settings
 ls_queue_type: memory

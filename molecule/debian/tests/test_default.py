@@ -38,6 +38,7 @@ def test_config_file_contents(host):
     assert b"node.name: node" in conf_file_content
     assert b"queue.type: memory" in conf_file_content
     assert b"log.level: info" in conf_file_content
+    assert b"pipeline.workers: 1" in conf_file_content
 
 
 # def test_default_pipeline(host):
