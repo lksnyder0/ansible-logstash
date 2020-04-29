@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8 --exclude venv
 platforms:
   - name: centos7
     image: lksnyder0/centos_systemd:7
@@ -12,10 +15,10 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     command: "/usr/sbin/init"
-    tty: True
+    tty: true
     environment:
       container: docker
-    pre_build_image: True
+    pre_build_image: true
 provisioner:
   name: ansible
   lint:
