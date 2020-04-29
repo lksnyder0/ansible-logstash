@@ -9,5 +9,6 @@
         "editor.tabSize": 2
     },
     "restructuredtext.confPath": "",
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "venv/bin/python"
 }
