@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/linux,python,ansible,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=linux,python,ansible,visualstudiocode
+# Created by https://www.gitignore.io/api/linux,python,ansible,virtualenv,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=linux,python,ansible,virtualenv,visualstudiocode
 
 ### Ansible ###
 *.retry
@@ -125,6 +125,19 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-selfcheck.json
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -136,4 +149,4 @@ dmypy.json
 # Ignore all local history of files
 .history
 
-# End of https://www.gitignore.io/api/linux,python,ansible,visualstudiocode
+# End of https://www.gitignore.io/api/linux,python,ansible,virtualenv,visualstudiocode
